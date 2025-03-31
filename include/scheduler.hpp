@@ -11,6 +11,7 @@ class Scheduler {
     public:
         void addTask(const Task& task); // adds task to queue and sorts it
         void displayQueue() const; // displays tasks in the queue
+        void runPreemptive(); // runs the scheduler in preemptive mode
 };
 
 #endif

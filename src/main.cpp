@@ -8,11 +8,13 @@ int main() {
     Task task2(2, "Task 2", 2, 3, 1);
     Task task3(3, "Task 3", 1, 4, 2);
 
+    // adds some sample tasks^^^
     scheduler.addTask(task1);
     scheduler.addTask(task2);
     scheduler.addTask(task3);
 
     scheduler.displayQueue();
+    scheduler.runPreemptive();
     
     return 0;
 }
