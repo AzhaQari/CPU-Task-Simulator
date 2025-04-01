@@ -2,6 +2,9 @@
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 
 // adds tasks to the queue and sorts them by priority
 void Scheduler::addTask(const Task& task) {
@@ -43,7 +46,7 @@ void Scheduler::runPreemptive() {
             }
         }
 
-        // then we pick tasks with the highest priorityu 
+        // next we pick tasks with the highest priorityu 
         if (!availableTasks.empty()) {
             auto next_task = *std::min_element(availableTasks.begin(), availableTasks.end(),
                 [](const Task* a, const Task* b) {
@@ -72,20 +75,42 @@ void Scheduler::runPreemptive() {
             current_time++;
         }
     }
+}
 
-    // this will display the final results of all the tasks:
-    std::cout << "\nAll tasks completed with preemptive priority scheduling.\n";
-    std::cout << "-----------------------------------------------------------\n";
-    std::cout << std::left << std::setw(5) << "ID"
-              << std::setw(22) << "Name"
-              << std::setw(20) << "Turnaround Time" // total time to complete task from arrival to completion
-              << std::setw(18) << "Waiting Time" << '\n'; // total time the task spent waiting in the queue
-    
+// this will print the results to the terminal and to the schedule_log.txt file
+void Scheduler::printAndLogResults(const std::string& filename) const {
+    std::ostringstream output;
+
+    output << "-----------------------------------------------------------\n";
+    output << "\nAll tasks completed with preemptive priority scheduling.\n";
+    output << "-----------------------------------------------------------\n";
+    output << std::left << std::setw(5) << "ID"
+           << std::setw(22) << "Name"
+           << std::setw(20) << "Turnaround Time"
+           << std::setw(18) << "Waiting Time" << '\n';
+
     for (const auto& task : readyQueue) {
-        std::cout << std::left << std::setw(5) << task.id
-                  << std::setw(22) << task.name
-                  << std::setw(20) << task.turnaround_time
-                  << std::setw(18) << task.waiting_time << '\n';
+        output << std::left << std::setw(5) << task.id
+               << std::setw(22) << task.name
+               << std::setw(20) << task.turnaround_time
+               << std::setw(18) << task.waiting_time << '\n';
     }
-    std::cout << "-----------------------------------------------------------\n";
+
+    output << "-----------------------------------------------------------\n";
+    output << "Turnaround Time = Completion Time - Arrival Time\n";
+    output << "Waiting Time = Turnaround Time - Burst Time\n";
+    output << "Burst Time = Total CPU time required to complete the task\n";
+
+
+    // print to terminal
+    std::cout << output.str();
+
+    // write to the log file
+    std::ofstream file(filename);
+    if (file.is_open()) {
+        file << output.str();
+        file.close();
+    } else {
+        std::cerr << "Failed to open log file: " << filename << '\n';
+    }
 }
