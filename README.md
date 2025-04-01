@@ -85,4 +85,3 @@ Green-Hills-Project/
 Azha Qari  
 Computer Science Graduate from The Georgia Institute of Technology (Georgia Tech) 
 
-This project was created as part of the interview assessment for **Green Hills Software**.
