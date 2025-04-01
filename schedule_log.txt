@@ -1,0 +1,25 @@
+-----------------------------------------------------------
+
+All tasks completed with preemptive priority scheduling.
+-----------------------------------------------------------
+ID   Name                  Turnaround Time     Waiting Time      
+0    ShowOffCoolProject    10                  0                 
+1    InitializeHardware    14                  10                
+4    PerformSecurityCheck  17                  11                
+9    UpdateStatusLED       13                  12                
+14   CheckBatteryLevel     10                  8                 
+2    LoadBootConfig        25                  22                
+5    MonitorTemperature    24                  22                
+7    LaunchMainUI          27                  22                
+10   RunDiagnostics        29                  24                
+12   RefreshUI             29                  27                
+15   EncryptUserData       32                  26                
+3    StartNetworkService   49                  44                
+6    SaveUserPreferences   49                  46                
+8    SyncCloudData         51                  47                
+11   BackupLogs            51                  48                
+13   ClearTempFiles        53                  49                
+-----------------------------------------------------------
+Turnaround Time = Completion Time - Arrival Time
+Waiting Time = Turnaround Time - Burst Time
+Burst Time = Total CPU time required to complete the task

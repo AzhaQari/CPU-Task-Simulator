@@ -1,6 +1,9 @@
 #include "../include/simulator.hpp"
 #include "../include/input.hpp"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 
 // loads tasks from tasks file and runs the scheduler
 void Simulator::loadAndRun(const std::string& filename) {
@@ -17,4 +20,5 @@ void Simulator::loadAndRun(const std::string& filename) {
     }
 
     scheduler.runPreemptive(); // runs the scheduler
+    scheduler.printAndLogResults(); // this prints results to terminal and to the shecedule_log.txt file
 }

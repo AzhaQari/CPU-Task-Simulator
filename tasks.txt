@@ -10,7 +10,7 @@
 9 UpdateStatusLED 8 1 1
 10 RunDiagnostics 9 5 2
 11 BackupLogs 10 3 3
-incorrectly formatted line here!
+Example of an incorrectly formatted task :D
 12 RefreshUI 11 2 2
 13 ClearTempFiles 12 4 3
 14 CheckBatteryLevel 13 2 1
