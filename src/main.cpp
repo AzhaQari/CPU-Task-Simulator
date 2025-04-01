@@ -1,20 +1,14 @@
 #include "../include/scheduler.hpp"
+#include "../include/input.hpp"  
 #include <iostream>
+#include "../include/simulator.hpp"  
 
 int main() {
-    Scheduler scheduler;
+    // loads tasks.txt and runs the scheduler
+    std::string filePath = "tasks.txt";
 
-    Task task1(1, "Task 1", 0, 5, 3);
-    Task task2(2, "Task 2", 2, 3, 1);
-    Task task3(3, "Task 3", 1, 4, 2);
+    Simulator simulator;
+    simulator.loadAndRun(filePath);
 
-    // adds some sample tasks^^^
-    scheduler.addTask(task1);
-    scheduler.addTask(task2);
-    scheduler.addTask(task3);
-
-    scheduler.displayQueue();
-    scheduler.runPreemptive();
-    
     return 0;
 }

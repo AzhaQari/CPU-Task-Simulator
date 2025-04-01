@@ -77,15 +77,15 @@ void Scheduler::runPreemptive() {
     std::cout << "\nAll tasks completed with preemptive priority scheduling.\n";
     std::cout << "-----------------------------------------------------------\n";
     std::cout << std::left << std::setw(5) << "ID"
-              << std::setw(10) << "Name"
-              << std::setw(12) << "Turnaround" // total time to complete task from arrival to completion
-              << std::setw(10) << "Waiting" << '\n'; // total time the task spent waiting in the queue
+              << std::setw(22) << "Name"
+              << std::setw(20) << "Turnaround Time" // total time to complete task from arrival to completion
+              << std::setw(18) << "Waiting Time" << '\n'; // total time the task spent waiting in the queue
     
     for (const auto& task : readyQueue) {
         std::cout << std::left << std::setw(5) << task.id
-                  << std::setw(10) << task.name
-                  << std::setw(12) << task.turnaround_time
-                  << std::setw(10) << task.waiting_time << '\n';
+                  << std::setw(22) << task.name
+                  << std::setw(20) << task.turnaround_time
+                  << std::setw(18) << task.waiting_time << '\n';
     }
     std::cout << "-----------------------------------------------------------\n";
 }
